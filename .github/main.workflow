@@ -21,7 +21,7 @@ action "Docker Lint" {
 action "Build" {
   needs = ["Shell Lint", "Test", "Docker Lint"]
   uses = "actions/docker/cli@master"
-  args = "build -t zeit-now ."
+  args = "build -t gatsby-cli-github-action ."
 }
 
 action "Docker Tag" {
