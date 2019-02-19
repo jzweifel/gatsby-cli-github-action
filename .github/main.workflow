@@ -24,16 +24,16 @@ action "Build" {
   args = "build -t gatsby-cli-github-action ."
 }
 
-action "Docker Tag" {
-  needs = ["Build"]
-  uses = "actions/docker/tag@master"
-  args = "gatsby-cli-github-action jzweifel/gatsby-cli-github-action --no-latest"
-}
-
 action "Publish Filter" {
   needs = ["Build"]
   uses = "actions/bin/filter@master"
   args = "branch master"
+}
+
+action "Docker Tag" {
+  needs = ["Publish Filter"]
+  uses = "actions/docker/tag@master"
+  args = "gatsby-cli-github-action jzweifel/gatsby-cli-github-action --no-latest"
 }
 
 action "Docker Login" {
