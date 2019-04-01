@@ -11,7 +11,7 @@ workflow "Build Gatsby Site" {
 }
 
 action "build" {
-    uses = "jzweifel/gatsby-cli-github-action"
+    uses = "jzweifel/gatsby-cli-github-action@master"
     args = "build"
 }
 ```
@@ -23,7 +23,7 @@ workflow "Build Gatsby Site in Subdirectory" {
 }
 
 action "build" {
-    uses = "jzweifel/gatsby-cli-github-action"
+    uses = "jzweifel/gatsby-cli-github-action@master"
     env = {
       GATSBY_PROJECT_PATH = "./client"
     }
