@@ -1,0 +1,12 @@
+name: 'GitHub Action for Gatsby CLI'
+description: 'This Action wraps the Gatsby CLI to enable common Gatsby commands.'
+inputs:
+  gatsby-arg:
+    description: 'Arguments to pass to Gatsby CLI'
+    required: true
+    default: 'build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.gatsby-arg }}
