@@ -1,0 +1,38 @@
+on: push
+name: Build and Publish
+jobs:
+  docker_lint:
+    name: Docker Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: luke142367/Docker-Lint-Action@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TARGET: Dockerfile
+  shell_lint:
+    name: Shell Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ludeeus/action-shellcheck@master
+  docker_build:
+    needs: [docker_lint, shell_lint]
+    name: Docker Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: docker build -t pr-status-giphy-action .
+  docker_tag_publish:
+    needs: [docker_build]
+    name: Docker Tag and Publish
+    runs-on: ubuntu-latest
+    if: contains(github.ref,'master')
+    steps:
+    - uses: actions/checkout@master
+    - uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: docker.pkg.github.com/jzweifel/gatsby-cli-github-action/gatsby-cli-github-action
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        registry: docker.pkg.github.com

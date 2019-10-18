@@ -4,32 +4,43 @@ This Action wraps the [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/) to
 
 ## Usage
 
-```workflow
-workflow "Build Gatsby Site" {
-  on = "push"
-  resolves = ["build"]
-}
-
-action "build" {
-    uses = "jzweifel/gatsby-cli-github-action@master"
-    args = "build"
-}
+```yml
+on: push
+name: Build Gatsby Site
+jobs:
+  build:
+    name: Build Gatsby Site
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build Gatsby Site
+      uses: jzweifel/gatsby-cli-github-action@master
+      with:
+        gatsby-arg: build
 ```
 
-```workflow
-workflow "Build Gatsby Site in Subdirectory" {
-  on = "push"
-  resolves = ["build"]
-}
-
-action "build" {
-    uses = "jzweifel/gatsby-cli-github-action@master"
-    env = {
-      GATSBY_PROJECT_PATH = "./client"
-    }
-    args = "build"
-}
+```yml
+on: push
+name: Build Gatsby Site in Subdirectory
+jobs:
+  build:
+    name: Build Gatsby Site
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build Gatsby Site
+      uses: jzweifel/gatsby-cli-github-action@master
+      env:
+        GATSBY_PROJECT_PATH = "./client"
+      with:
+        gatsby-arg: build
 ```
+
+### Inputs
+
+#### `gatsby-arg`
+
+**Required** The arguments to pass to Gatsby CLI. Default `build`.
 
 ### Environment variables
 
