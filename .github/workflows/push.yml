@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - run: docker build -t pr-status-giphy-action .
+    - run: docker build -t gatsby-cli-github-action .
   docker_tag_publish:
     needs: [docker_build]
     name: Docker Tag and Publish
