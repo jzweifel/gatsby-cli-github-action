@@ -31,7 +31,7 @@ jobs:
     - name: Build Gatsby Site
       uses: jzweifel/gatsby-cli-github-action@master
       env:
-        GATSBY_PROJECT_PATH = "./client"
+        GATSBY_PROJECT_PATH: "./client"
       with:
         gatsby-arg: build
 ```
