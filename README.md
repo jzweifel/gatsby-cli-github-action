@@ -12,11 +12,11 @@ jobs:
     name: Build Gatsby Site
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Build Gatsby Site
-      uses: jzweifel/gatsby-cli-github-action@master
-      with:
-        gatsby-arg: build
+      - uses: actions/checkout@master
+      - name: Build Gatsby Site
+        uses: jerluc/gatsby-cli-github-action@master
+        with:
+          gatsby-arg: build
 ```
 
 ```yml
@@ -27,13 +27,13 @@ jobs:
     name: Build Gatsby Site
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Build Gatsby Site
-      uses: jzweifel/gatsby-cli-github-action@master
-      env:
-        GATSBY_PROJECT_PATH: "./client"
-      with:
-        gatsby-arg: build
+      - uses: actions/checkout@master
+      - name: Build Gatsby Site
+        uses: jerluc/gatsby-cli-github-action@master
+        env:
+          GATSBY_PROJECT_PATH: "./client"
+        with:
+          gatsby-arg: build
 ```
 
 ### Inputs
@@ -44,7 +44,7 @@ jobs:
 
 ### Environment variables
 
-* `GATSBY_PROJECT_PATH` - **Optional**. Directory from which to execute the Gatsby CLI.
+- `GATSBY_PROJECT_PATH` - **Optional**. Directory from which to execute the Gatsby CLI.
 
 ## License
 
