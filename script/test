@@ -6,5 +6,5 @@ set -e
 # Ensure we're always running from the project root
 cd "$(dirname "$0")/.."
 
-bats test/*.bats
-shellcheck *.sh
+bats "test/*.bats"
+shellcheck "*.sh"
