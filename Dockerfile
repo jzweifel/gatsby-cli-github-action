@@ -1,4 +1,4 @@
-FROM node:12-slim
+FROM node:14-slim
 
 LABEL version="1.0.0"
 LABEL "repository"="http://github.com/jzweifel/gatsby-cli-github-action"
