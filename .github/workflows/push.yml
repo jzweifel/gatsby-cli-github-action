@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: jzweifel/gatsby-cli-github-action/gatsby-cli-github-action
+        name: jerluc/gatsby-cli-github-action/gatsby-cli-github-action
         password: ${{ secrets.DOCKER_PASSWORD }}
         username: ${{ secrets.DOCKER_USERNAME }}
         registry: docker.pkg.github.com
